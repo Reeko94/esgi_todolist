@@ -54,6 +54,11 @@ class User
      */
     private $dob;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Todolist::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $todolist;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -126,5 +131,22 @@ class User
     {
         // In Symfony, it's recommended to use annotation to test properties
         // But we can test our entity with phpunit
+    }
+
+    public function getTodolist(): ?Todolist
+    {
+        return $this->todolist;
+    }
+
+    public function setTodolist(Todolist $todolist): self
+    {
+        // set the owning side of the relation if necessary
+        if ($todolist->getUser() !== $this) {
+            $todolist->setUser($this);
+        }
+
+        $this->todolist = $todolist;
+
+        return $this;
     }
 }

@@ -39,6 +39,12 @@ class Item
      */
     private $created_at;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Todolist::class, inversedBy="items")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $todolist;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,6 +82,18 @@ class Item
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getTodolist(): ?Todolist
+    {
+        return $this->todolist;
+    }
+
+    public function setTodolist(?Todolist $todolist): self
+    {
+        $this->todolist = $todolist;
 
         return $this;
     }

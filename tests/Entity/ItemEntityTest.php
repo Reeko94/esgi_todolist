@@ -5,6 +5,7 @@ namespace App\Tests\Entity;
 
 
 use App\Entity\Item;
+use App\Entity\Todolist;
 use DateTime;
 use Faker\Factory;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -23,7 +24,8 @@ class ItemEntityTest extends KernelTestCase
         return (new Item())
             ->setContent($faker->text(999))
             ->setName($faker->name)
-            ->setCreatedAt(new DateTime());
+            ->setCreatedAt(new DateTime())
+            ->setTodolist(new Todolist());
     }
 
     public function assertHasErrors(Item $item, int $number = 0)
