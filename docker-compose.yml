@@ -42,6 +42,11 @@ services:
       - ./public:/srv/app/public:ro
     ports:
       - "8082:80"
+  mail:
+    image: maildev/maildev
+    ports:
+      - 1080:80
+      - 1025:25
 
 volumes:
   db-data: { }

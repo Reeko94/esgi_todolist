@@ -4,10 +4,11 @@ namespace App\Entity;
 
 use App\Repository\ItemRepository;
 use Doctrine\ORM\Mapping as ORM;
+use \DateTime as DateTimePHP;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=ItemRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\ItemRepository", repositoryClass=ItemRepository::class)
  */
 class Item
 {
